@@ -64,7 +64,7 @@ const Photos = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch('https://gallery-app-server.vercel.app/photoss')
+		fetch('https://gallery-app-server.vercel.app/photos')
 			.then((res) => res.json())
 			.then((res) => {
 				setPhotos(res);
