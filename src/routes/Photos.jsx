@@ -30,7 +30,7 @@ const Photos = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		fetch(`https://gallery-app-server.vercel.app/photos?_sort=id&_order=${sort}`)
+		fetch(`https://gallery-app-server.vercel.app/photos?_sort=id&_order=${sort}&q=${submited}`)
 			.then((res) => {
 				return res.json();
 			})
@@ -43,23 +43,23 @@ const Photos = () => {
 				setError(err.message);
 				setLoading(false);
 			});
+
 		//jika search tidak kosong
-		if (search) {
-			//lakukan search pada server dengan url http://localhost:3001/photos?q={search}
-			fetch(`https://gallery-app-server.vercel.app/photos?q=${search}`)
-				.then((res) => {
-					return res.json();
-				})
-				.then((data) => {
-					setPhotos(data);
-					setLoading(false);
-					setError(null);
-				})
-				.catch((err) => {
-					setError(err.message);
-					setLoading(false);
-				});
-		}
+		// if (search) {
+		// 	//lakukan search pada server dengan url http://localhost:3001/photos?q={search}
+		// 	fetch(`https://gallery-app-server.vercel.app/photos?q=${search}`)
+		// 		.then((res) => {
+		// 			return res.json();
+		// 		})
+		// 		.then((data) => {
+		// 			setPhotos(data);
+		// 			setLoading(false);
+		// 			setError(null);
+		// 		})
+		// 		.catch((err) => {
+		// 			setError(err.message);
+		// 			setLoading(false);
+		// 		});
 	}, [sort, submited]);
 
 	useEffect(() => {
